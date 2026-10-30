@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IRONCORE FITNESS — Build Strength. Break Limits.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080808;--bg2:#151515;--red:#ff3030;--tx:#fff;--mu:#a0a0a0;--ln:#2a2a2a;color-scheme:dark;
+--hero-img:none;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.7 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.disp{font-family:Oswald,"Arial Narrow",Impact,sans-serif;text-transform:uppercase;line-height:1.05;margin:0;letter-spacing:.01em}
+h2{font-size:clamp(2rem,5vw,3.4rem);font-weight:700}
+p{margin:0}a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+section{padding:96px 0}
+.label{color:var(--red);font:600 .8rem Inter;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px;display:block}
+.mu{color:var(--mu)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;font:600 .95rem Oswald;letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--red);background:var(--red);color:#fff;cursor:pointer;transition:.25s;border-radius:2px}
+.btn:hover{background:#d91f1f;border-color:#d91f1f;transform:translateY(-2px)}
+.btn.ghost{background:transparent;border-color:#555}.btn.ghost:hover{border-color:#fff;background:transparent}
+svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+/* nav */
+header{position:fixed;inset:0 0 auto 0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:.3s}
+header.sc{background:rgba(8,8,8,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--ln)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font:700 1.5rem Oswald;letter-spacing:.06em}.logo b{color:var(--red)}
+.links{display:flex;gap:28px;align-items:center}
+.links a.l{font:500 .85rem Inter;letter-spacing:.1em;text-transform:uppercase;color:#ddd;padding:6px 0;border-bottom:2px solid transparent}
+.links a.l:hover,.links a.l.on{color:#fff;border-color:var(--red)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:28px;padding:8px;cursor:pointer}
+@media(max-width:900px){.burger{display:block}
+.links{position:fixed;inset:calc(72px + env(safe-area-inset-top,0px)) 0 auto 0;background:#080808;flex-direction:column;align-items:stretch;gap:0;padding:12px 20px 24px;border-bottom:1px solid var(--ln);transform:translateY(-130%);transition:.3s;visibility:hidden}
+.links.open{transform:none;visibility:visible}
+.links a.l{padding:14px 0;border-bottom:1px solid var(--ln)}.links .btn{justify-content:center;margin-top:16px}}
+/* hero */
+.hero{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;padding:130px 0 90px;
+background:linear-gradient(90deg,rgba(8,8,8,.95) 20%,rgba(8,8,8,.55)),var(--hero-img) center/cover,
+radial-gradient(60% 70% at 85% 30%,rgba(255,48,48,.28),transparent 70%),repeating-linear-gradient(115deg,#0d0d0d 0 40px,#111 40px 80px)}
+.hero h1{font-size:clamp(3rem,9vw,7rem);font-weight:700;max-width:900px}.hero h1 em{color:var(--red);font-style:normal}
+.hero p.s{max-width:560px;color:#cfcfcf;font-size:1.1rem;margin:24px 0 36px}
+.ctas{display:flex;gap:14px;flex-wrap:wrap}
+.trust{display:flex;gap:28px;flex-wrap:wrap;margin-top:48px;color:var(--mu);font-size:.9rem}
+.trust span{display:flex;gap:8px;align-items:center}.trust .i{color:var(--red)}
+.hstat{position:absolute;right:max(20px,calc(50% - 580px));bottom:60px;border-left:3px solid var(--red);padding-left:16px}
+.hstat b{font:700 2.6rem Oswald;display:block;line-height:1}.hstat span{color:var(--mu);font-size:.8rem;text-transform:uppercase;letter-spacing:.12em}
+.scroll{position:absolute;left:50%;bottom:22px;width:22px;height:36px;border:2px solid #666;border-radius:12px;transform:translateX(-50%)}
+.scroll::after{content:"";position:absolute;left:50%;top:6px;width:4px;height:8px;margin-left:-2px;background:var(--red);border-radius:2px;animation:sc 1.6s infinite}
+@keyframes sc{50%{transform:translateY(10px);opacity:.3}}
+@media(max-width:700px){.hstat,.scroll{display:none}.hero{padding-top:110px}}
+/* stats */
+.stats{background:var(--bg2);padding:56px 0;border-block:1px solid var(--ln)}
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.sg b{font:700 clamp(2.4rem,5vw,4rem) Oswald;color:var(--red);display:block;line-height:1}
+.sg span{color:var(--mu);text-transform:uppercase;letter-spacing:.1em;font-size:.8rem}
+.note{text-align:center;color:#666;font-size:.75rem;margin-top:24px}
+@media(max-width:700px){.sg{grid-template-columns:1fr 1fr;gap:36px 16px}}
+/* about */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.art{aspect-ratio:4/5;border-radius:4px;overflow:hidden;position:relative;background:radial-gradient(70% 60% at 30% 25%,rgba(255,48,48,.35),transparent),linear-gradient(160deg,#222,#0c0c0c);display:grid;place-items:center;transition:.5s}
+.art .i{font-size:120px;color:rgba(255,255,255,.12);transition:.5s}
+.art:hover .i{transform:scale(1.12) rotate(-6deg);color:rgba(255,48,48,.5)}
+.art small{position:absolute;bottom:14px;left:16px;color:#666;font-size:.7rem}
+.ticks{list-style:none;padding:0;margin:28px 0 36px;display:grid;grid-template-columns:1fr 1fr;gap:12px 20px}
+.ticks li{display:flex;gap:10px;color:#ddd;font-size:.95rem;line-height:1.4}.ticks .i{color:var(--red);margin-top:3px}
+@media(max-width:900px){.two{grid-template-columns:1fr;gap:40px}.ticks{grid-template-columns:1fr}.art{aspect-ratio:16/11}}
+/* programs */
+.alt{background:var(--bg2)}
+.head{margin-bottom:56px;max-width:700px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:980px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:640px){.grid{grid-template-columns:1fr}}
+.card{background:var(--bg);border:1px solid var(--ln);overflow:hidden;transition:.3s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);border-color:var(--red)}
+.pimg{aspect-ratio:16/10;display:grid;place-items:center;overflow:hidden;position:relative}
+.pimg .i{font-size:72px;color:rgba(255,255,255,.85);transition:.5s;position:relative}
+.pimg::before{content:"";opacity:var(--o,1);position:absolute;inset:0;background:var(--g);transition:.5s}
+.card:hover .pimg::before{transform:scale(1.12)}.card:hover .pimg .i{transform:scale(1.1)}
+.cb{padding:26px;display:flex;flex-direction:column;gap:12px;flex:1}
+.cb h3{font-size:1.5rem;font-weight:600}.cb p{color:var(--mu);font-size:.95rem;flex:1}
+.more{background:none;border:0;color:var(--red);font:600 .85rem Oswald;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;display:inline-flex;gap:6px;align-items:center;padding:0;align-self:flex-start}
+.more:hover{gap:12px}
+dialog{background:var(--bg2);color:#fff;border:1px solid var(--red);max-width:560px;width:calc(100% - 32px);padding:36px;border-radius:4px}
+dialog::backdrop{background:rgba(0,0,0,.8)}
+dialog h3{font-size:2rem;margin-bottom:12px}dialog ul{padding-left:20px;color:#ddd}dialog li{margin:6px 0}
+.x{position:absolute;right:14px;top:14px;background:none;border:0;color:#fff;font-size:24px;cursor:pointer}
+/* trainers */
+.tc{background:var(--bg2);border:1px solid var(--ln);border-top:3px solid transparent;transition:.3s}
+.tc:hover{border-top-color:var(--red);transform:translateY(-4px)}
+.port{aspect-ratio:3/4;display:grid;place-items:center;background:linear-gradient(170deg,#2a2a2a,#0e0e0e);font:700 4.5rem Oswald;color:#3a3a3a}
+.tb{padding:22px}.tb h3{font-size:1.4rem}.tb .sp{color:var(--red);font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:4px 0 10px}
+.tb p{color:var(--mu);font-size:.9rem}.tb .ex{color:#ddd;font-size:.85rem;margin-bottom:8px}
+.g4{grid-template-columns:repeat(4,1fr)}@media(max-width:1000px){.g4{grid-template-columns:1fr 1fr}}@media(max-width:560px){.g4{grid-template-columns:1fr}}
+/* plans */
+.plan{background:var(--bg2);border:1px solid var(--ln);padding:36px 30px;display:flex;flex-direction:column;position:relative}
+.plan.hot{border-color:var(--red);background:linear-gradient(180deg,#1d1010,var(--bg2))}
+.plan .tag{position:absolute;top:-13px;left:30px;background:var(--red);font:600 .75rem Oswald;letter-spacing:.14em;padding:4px 12px}
+.price{font:700 3.2rem Oswald;margin:12px 0 4px}.price small{font:400 .9rem Inter;color:var(--mu)}
+.plan ul{list-style:none;padding:0;margin:24px 0 32px;flex:1}.plan li{display:flex;gap:10px;padding:7px 0;color:#ddd;font-size:.95rem}.plan li .i{color:var(--red);margin-top:5px}
+.g3{grid-template-columns:repeat(3,1fr)}@media(max-width:900px){.g3{grid-template-columns:1fr;max-width:460px;margin:0 auto}}
+/* contact */
+.form{display:grid;gap:16px}
+.form label{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mu)}
+.form input,.form select,.form textarea{width:100%;margin-top:6px;background:var(--bg);border:1px solid #333;color:#fff;padding:14px;font:inherit;border-radius:2px}
+.form input:focus,.form select:focus,.form textarea:focus{border-color:var(--red);outline:none}
+.info p{display:flex;gap:12px;margin:18px 0;color:#ddd}.info .i{color:var(--red);margin-top:6px}
+#ok{color:#6fdc8c;font-size:.9rem;min-height:1.4em}
+footer{border-top:1px solid var(--ln);padding:40px 0;text-align:center;color:#777;font-size:.85rem}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+.hero .rv{transition-delay:calc(var(--d,0)*.12s)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+.mq{overflow:hidden;background:var(--red);padding:14px 0;white-space:nowrap}
+.mq div{display:inline-flex;gap:40px;animation:mq 28s linear infinite;font:600 1.2rem Oswald;letter-spacing:.14em;text-transform:uppercase}
+@keyframes mq{to{transform:translateX(-50%)}}
+.bar{position:absolute;right:-60px;top:50%;width:min(60vw,720px);transform:translateY(-50%) rotate(-12deg);opacity:.14;pointer-events:none}
+.tabs{display:flex;gap:8px;overflow-x:auto;margin-bottom:28px;padding-bottom:6px}
+.tabs button{background:var(--bg);border:1px solid var(--ln);color:#ddd;padding:10px 22px;font:600 .9rem Oswald;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px}
+.tabs button[aria-selected=true]{background:var(--red);border-color:var(--red);color:#fff}
+.row{display:grid;grid-template-columns:110px 1fr auto;gap:16px;align-items:center;background:var(--bg);border:1px solid var(--ln);border-left:3px solid var(--red);padding:18px 22px;margin-bottom:10px}
+.row b{font:600 1.2rem Oswald;color:var(--red)}.row h3{font-size:1.15rem}.row span{color:var(--mu);font-size:.85rem}
+@media(max-width:600px){.row{grid-template-columns:1fr;gap:4px}}
+.bmi{background:var(--bg2);border:1px solid var(--ln);padding:34px;display:grid;gap:18px}
+.bmi .o{font:700 3rem Oswald;color:var(--red);line-height:1}
+.q{background:var(--bg2);border:1px solid var(--ln);padding:30px;position:relative}
+.q p{color:#ddd;margin:12px 0 18px}.q b{font:600 1.05rem Oswald;letter-spacing:.06em;text-transform:uppercase}.q small{display:block;color:var(--mu)}
+.st{color:var(--red);letter-spacing:3px}
+details{border-bottom:1px solid var(--ln);padding:20px 0}
+summary{cursor:pointer;font:600 1.2rem Oswald;letter-spacing:.04em;text-transform:uppercase;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";color:var(--red);font-size:1.6rem;line-height:1}details[open] summary::after{content:"\2212"}
+details p{color:var(--mu);margin-top:12px;max-width:760px}
+.cta{background:linear-gradient(110deg,#a01010,var(--red));padding:72px 0;text-align:center}
+.cta h2{margin-bottom:14px}.cta p{max-width:560px;margin:0 auto 28px;color:#ffe3e3}
+.cta .btn{background:#080808;border-color:#080808}.cta .btn:hover{background:#000;border-color:#000}
+</style>
+</head>
+<body>
+<header id="hd"><div class="wrap nav">
+<a href="#home" class="logo" aria-label="IRONCORE FITNESS home">IRON<b>CORE</b> FITNESS</a>
+<button class="burger" id="bg" aria-label="Open menu" aria-expanded="false" aria-controls="lk"></button>
+<nav class="links" id="lk" aria-label="Main">
+<a class="l" href="#home">Home</a><a class="l" href="#about">About</a><a class="l" href="#programs">Programs</a><a class="l" href="#trainers">Trainers</a><a class="l" href="#schedule">Schedule</a><a class="l" href="#membership">Membership</a><a class="l" href="#contact">Contact</a>
+<a class="btn" href="#membership">Join Now</a></nav></div></header>
+
+<main>
+<section class="hero" id="home">
+<div class="wrap">
+<span class="label rv" style="--d:0">Your fitness. Your rules.</span>
+<h1 class="rv" style="--d:1">Forge your <em>strongest</em> self.</h1>
+<p class="s rv" style="--d:2">Train harder. Move stronger. Become unstoppable. Join a community built around strength, discipline, and real progress.</p>
+<div class="ctas rv" style="--d:3"><a class="btn" href="#membership">Start your journey <span data-i="arrow"></span></a><a class="btn ghost" href="#programs">Explore programs</a></div>
+<div class="trust rv" style="--d:4"><span><i data-i="check"></i>Expert coaches</span><span><i data-i="check"></i>Modern equipment</span><span><i data-i="check"></i>Training for every level</span></div>
+</div>
+<svg class="bar" viewBox="0 0 400 80" fill="#fff" aria-hidden="true"><rect x="0" y="22" width="14" height="36"/><rect x="18" y="8" width="22" height="64"/><rect x="44" y="0" width="22" height="80"/><rect x="66" y="35" width="268" height="10"/><rect x="334" y="0" width="22" height="80"/><rect x="360" y="8" width="22" height="64"/><rect x="386" y="22" width="14" height="36"/></svg><div class="hstat"><b>24/7</b><span>Sample · set your hours</span></div>
+<div class="scroll" aria-hidden="true"></div>
+</section>
+
+<div class="mq" aria-hidden="true"><div id="mq"></div></div>
+<div class="stats"><div class="wrap"><div class="sg" id="sg"></div>
+<p class="note">Sample figures — replace with verified business data before launch.</p></div></div>
+
+<section id="about"><div class="wrap two">
+<div class="art rv" role="img" aria-label="Placeholder for gym floor photo"><span data-i="dumbbell"></span><small>Replace with gym-floor photo (set via CSS/img)</small></div>
+<div class="rv">
+<span class="label">About us</span><h2>More than a gym. A movement.</h2>
+<p class="mu" style="margin-top:20px">At IRONCORE FITNESS, we believe fitness is about more than lifting weights. It’s about building confidence, developing discipline, and becoming stronger every day.</p>
+<ul class="ticks" id="tk"></ul>
+<a class="btn" href="#contact">Discover our gym</a></div></div></section>
+
+<section class="alt" id="programs"><div class="wrap">
+<div class="head rv"><span class="label">Programs</span><h2>Find your training style</h2></div>
+<div class="grid" id="pg"></div></div></section>
+
+<section id="trainers"><div class="wrap">
+<div class="head rv"><span class="label">Coaches</span><h2>Train with the best</h2>
+<p class="mu" style="margin-top:14px;font-size:.85rem">Placeholder profiles — edit the TRAINERS list in the script with real staff details.</p></div>
+<div class="grid g4" id="tg"></div></div></section>
+
+<section class="alt" id="schedule"><div class="wrap">
+<div class="head rv"><span class="label">Class schedule</span><h2>Your week, planned</h2>
+<p class="mu" style="margin-top:14px;font-size:.85rem">Sample timetable — replace with your real classes.</p></div>
+<div class="tabs" id="tb" role="tablist"></div><div id="tt" role="tabpanel"></div></div></section>
+
+<section id="membership"><div class="wrap">
+<div class="head rv"><span class="label">Membership</span><h2>Pick your plan</h2>
+<p class="mu" style="margin-top:14px;font-size:.85rem">Sample pricing (₹) — edit the PLANS list with your real rates.</p></div>
+<div class="grid g3" id="mg"></div></div></section>
+
+<section class="alt" id="tools"><div class="wrap two">
+<div class="rv"><span class="label">Free tool</span><h2>Know your starting point</h2>
+<p class="mu" style="margin-top:20px">Check your BMI as a quick reference, then let our coaches build a plan around your goals. BMI is a general screening guide and doesn’t account for muscle mass or replace medical advice.</p></div>
+<div class="bmi rv"><div class="form"><label>Height (cm)<input id="bh" type="number" min="100" max="250" value="170" inputmode="decimal"></label>
+<label>Weight (kg)<input id="bw" type="number" min="30" max="300" value="70" inputmode="decimal"></label></div>
+<div><span class="mu" style="font-size:.8rem;text-transform:uppercase;letter-spacing:.1em">Your BMI</span><div class="o" id="bo">—</div><p class="mu" id="bc" style="margin-top:6px"></p></div></div></div></section>
+
+<section id="reviews"><div class="wrap">
+<div class="head rv"><span class="label">Results</span><h2>Real people. Real progress.</h2>
+<p class="mu" style="margin-top:14px;font-size:.85rem">Sample testimonials — replace with real, consented member reviews.</p></div>
+<div class="grid g3" id="qg"></div></div></section>
+
+<section class="alt" id="faq"><div class="wrap" style="max-width:860px">
+<div class="head rv"><span class="label">FAQ</span><h2>Got questions?</h2></div><div id="fq"></div></div></section>
+
+<div class="cta"><div class="wrap"><h2>Your first step starts here.</h2>
+<p>Book a free tour, meet the coaches, and see the floor for yourself.</p><a class="btn" href="#contact">Book free tour</a></div></div>
+
+<section id="contact"><div class="wrap two" style="align-items:start">
+<div class="rv"><span class="label">Contact</span><h2>Start today</h2>
+<p class="mu" style="margin:20px 0">Book a free tour or ask us anything. We’ll get back to you quickly.</p>
+<div class="info"><p><i data-i="pin"></i>Your address here</p><p><i data-i="phone"></i>Your phone number</p><p><i data-i="clock"></i>Your opening hours</p></div></div>
+<form class="form rv" id="fm" novalidate>
+<label>Name<input name="n" required autocomplete="name"></label>
+<label>Email<input type="email" name="e" required autocomplete="email"></label>
+<label>I’m interested in<select name="p" id="sel"></select></label>
+<label>Message<textarea name="m" rows="4"></textarea></label>
+<button class="btn" type="submit">Book free tour</button><p id="ok" role="status"></p></form></div></section>
+</main>
+
+<footer><div class="wrap"><p class="disp" style="font-size:1.3rem;color:#fff">Build strength. Break limits.</p>
+<p style="margin-top:8px">© 2026 IRONCORE FITNESS. All rights reserved.</p></div></footer>
+
+<dialog id="dlg" aria-labelledby="dt"><button class="x" id="dx" aria-label="Close"></button><h3 id="dt"></h3><p class="mu" id="dd" style="margin-bottom:16px"></p><ul id="dl"></ul><a class="btn" href="#membership" id="dj" style="margin-top:24px">Join this program</a></dialog>
+
+<script>
+// ===== EDITABLE CONTENT (sample data — replace before launch) =====
+const STATS=[[1200,"+","Active members"],[15,"+","Expert trainers"],[25,"+","Weekly classes"],[10,"+","Years of experience"]];
+const PROGRAMS=[
+{t:"Strength Training",i:"dumbbell",g:"linear-gradient(135deg,#7a1010,#1a0808)",d:"Build strength, improve technique, and progressively increase performance.",l:["Barbell and compound lift coaching","Technique assessments","Progressive programming"]},
+{t:"Personal Training",i:"user",g:"linear-gradient(135deg,#3a3a3a,#111)",d:"Receive individualized coaching, structured workouts, and progress guidance.",l:["One-to-one sessions","Custom plan built around your goals","Regular progress check-ins"]},
+{t:"Weight Loss & Conditioning",i:"flame",g:"linear-gradient(135deg,#a02a10,#1c0c08)",d:"Improve fitness, develop sustainable exercise habits, and work toward body composition goals.",l:["Strength plus cardio circuits","Habit-focused coaching","Measurable goals"]},
+{t:"Muscle Building",i:"bolt",g:"linear-gradient(135deg,#8a1020,#14080a)",d:"Follow structured resistance training focused on progressive overload and muscular development.",l:["Hypertrophy-focused splits","Progressive overload tracking","Exercise selection guidance"]},
+{t:"Functional Fitness",i:"pulse",g:"linear-gradient(135deg,#2e2e2e,#0e0e0e)",d:"Improve mobility, balance, coordination, and everyday movement capacity.",l:["Mobility work","Balance and coordination drills","Everyday movement patterns"]},
+{t:"Group Fitness",i:"users",g:"linear-gradient(135deg,#901818,#1a0a0a)",d:"Train with others in energetic, instructor-led sessions.",l:["Instructor-led classes","All levels welcome","Motivating community energy"]}];
+const TRAINERS=[
+{n:"Vikram Singh",s:"Strength & Conditioning",x:"8 yrs experience",b:"Helps lifters build a strong, technically sound foundation.",links:[]},
+{n:"Rahul Sharma",s:"Muscle Building",x:"6 yrs experience",b:"Focuses on structured hypertrophy training and steady progress.",links:[]},
+{n:"Priya Verma",s:"Functional Fitness",x:"7 yrs experience",b:"Specializes in mobility, balance, and movement quality.",links:[]},
+{n:"Kabir Malhotra",s:"Personal Training",x:"9 yrs experience",b:"Builds individualized programs and keeps clients accountable.",links:[]}]; // links: [{label,url}] — add only real profile URLs
+const PLANS=[
+{n:"Basic",p:"1,999",f:["Full gym floor access","Locker rooms","Starter fitness assessment"]},
+{n:"Pro",p:"3,499",hot:1,f:["Everything in Basic","Unlimited group classes","Monthly progress review","Guest pass"]},
+{n:"Elite",p:"5,999",f:["Everything in Pro","Personal training sessions","Custom training plan","Priority booking"]}];
+const BENEFITS=["Modern strength and cardio equipment","Experienced coaching team","Clean, well-maintained environment","Programs for every fitness level","Supportive fitness community","Flexible membership options"];
+// ===== ICONS =====
+const P={arrow:"M5 12h14M13 6l6 6-6 6",check:"M20 6 9 17l-5-5",menu:"M4 6h16M4 12h16M4 18h16",x:"M18 6 6 18M6 6l12 12",
+dumbbell:"M6 7v10M3 10v4M18 7v10M21 10v4M6 12h12M9 5v14M15 5v14",user:"M20 21a8 8 0 0 0-16 0M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8",
+flame:"M12 3c1 4 6 6 6 12a6 6 0 0 1-12 0c0-3 2-4 3-7 1 1 2 2 3-5z",bolt:"M13 2 3 14h9l-1 8 10-12h-9z",pulse:"M22 12h-4l-3 9L9 3l-3 9H2",
+users:"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8",
+pin:"M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0zM12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6",phone:"M22 17v3a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-3 19 19 0 0 1-6-6A19 19 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z",clock:"M12 6v6l4 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z"};
+const ic=n=>`<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="${P[n]}"/></svg>`;
+const $=s=>document.querySelector(s);
+// ===== RENDER =====
+$("#sg").innerHTML=STATS.map(s=>`<div class="rv"><b data-c="${s[0]}" data-s="${s[1]}">0</b><span>${s[2]}</span></div>`).join("");
+$("#tk").innerHTML=BENEFITS.map(b=>`<li>${ic("check")}${b}</li>`).join("");
+$("#pg").innerHTML=PROGRAMS.map((p,k)=>`<article class="card rv"><div class="pimg" style="--g:${p.img?"linear-gradient(180deg,transparent,rgba(8,8,8,.7))":p.g}${p.img?`;background:url(${p.img}) center/cover`:""}">${p.img?"":ic(p.i)}</div><div class="cb"><h3>${p.t}</h3><p>${p.d}</p><button class="more" data-k="${k}">Learn more ${ic("arrow")}</button></div></article>`).join("");
+$("#tg").innerHTML=TRAINERS.map(t=>`<article class="tc rv"><div class="port" role="img" aria-label="${t.img?"Portrait of ":"Portrait placeholder for "}${t.n}" ${t.img?`style="background:url(${t.img}) center/cover"`:""}>${t.img?"":t.n.split(" ").map(w=>w[0]).join("")}</div><div class="tb"><h3>${t.n}</h3><div class="sp">${t.s}</div><div class="ex">${t.x}</div><p>${t.b}</p>${t.links.map(l=>`<a href="${l.url}" rel="noopener" target="_blank" style="color:var(--red);font-size:.8rem;margin-right:10px">${l.label}</a>`).join("")}</div></article>`).join("");
+$("#mg").innerHTML=PLANS.map(p=>`<div class="plan rv ${p.hot?"hot":""}">${p.hot?'<span class="tag">MOST POPULAR</span>':""}<h3 style="font-size:1.6rem">${p.n}</h3><div class="price">₹${p.p}<small> /month</small></div><ul>${p.f.map(f=>`<li>${ic("check")}${f}</li>`).join("")}</ul><a class="btn ${p.hot?"":"ghost"}" href="#contact" data-plan="${p.n}" style="justify-content:center">Choose ${p.n}</a></div>`).join("");
+$("#sel").innerHTML=PLANS.map(p=>`<option>${p.n} membership</option>`).join("")+PROGRAMS.map(p=>`<option>${p.t}</option>`).join("");
+$("#bg").innerHTML=ic("menu");$("#dx").innerHTML=ic("x");
+document.querySelectorAll("[data-i]").forEach(e=>e.outerHTML=ic(e.dataset.i));
+// ===== BEHAVIOUR =====
+const hd=$("#hd"),lk=$("#lk"),bg=$("#bg");
+addEventListener("scroll",()=>hd.classList.toggle("sc",scrollY>40),{passive:true});
+const tog=o=>{lk.classList.toggle("open",o);bg.setAttribute("aria-expanded",o);bg.innerHTML=ic(o?"x":"menu")};
+bg.onclick=()=>tog(!lk.classList.contains("open"));
+lk.querySelectorAll("a").forEach(a=>a.onclick=()=>tog(false));
+addEventListener("keydown",e=>e.key==="Escape"&&tog(false));
+const sec=["home","about","programs","trainers","schedule","membership","contact"];
+new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)lk.querySelectorAll("a.l").forEach(a=>a.classList.toggle("on",a.hash==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"}).observe&&sec.forEach(id=>{});
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)lk.querySelectorAll("a.l").forEach(a=>a.classList.toggle("on",a.hash==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+sec.forEach(id=>so.observe($("#"+id)));
+const count=el=>{const t=+el.dataset.c,s=el.dataset.s,t0=performance.now();const f=n=>{const p=Math.min((n-t0)/1600,1);el.textContent=Math.round(t*(1-Math.pow(1-p,3))).toLocaleString("en-US")+(p===1?s:"");p<1&&requestAnimationFrame(f)};requestAnimationFrame(f)};
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");e.target.querySelectorAll("[data-c]").forEach(count);ro.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll(".rv").forEach(e=>ro.observe(e));
+const dlg=$("#dlg");
+document.querySelectorAll(".more").forEach(b=>b.onclick=()=>{const p=PROGRAMS[b.dataset.k];$("#dt").textContent=p.t;$("#dd").textContent=p.d;$("#dl").innerHTML=p.l.map(x=>`<li>${x}</li>`).join("");dlg.showModal()});
+$("#dx").onclick=()=>dlg.close();$("#dj").onclick=()=>dlg.close();
+dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close()});
+document.querySelectorAll("[data-plan]").forEach(a=>a.onclick=()=>{$("#sel").value=a.dataset.plan+" membership"});
+$("#fm").onsubmit=e=>{e.preventDefault();const f=e.target;if(!f.n.value||!/\S+@\S+\.\S+/.test(f.e.value)){$("#ok").style.color="#ff7070";$("#ok").textContent="Please enter your name and a valid email.";return}
+$("#ok").style.color="#6fdc8c";$("#ok").textContent="Thanks! (Demo form — connect a backend or form service to receive submissions.)";f.reset()};
+
+const DAYS={Mon:[["06:00","Strength Foundations","Vikram Singh"],["18:00","HIIT Conditioning","Kabir Malhotra"],["19:30","Hypertrophy Lab","Rahul Sharma"]],
+Tue:[["07:00","Mobility Flow","Priya Verma"],["18:30","Functional Circuit","Priya Verma"]],
+Wed:[["06:00","Powerlifting Basics","Vikram Singh"],["18:00","Group Burn","Kabir Malhotra"],["19:30","Push Day Workshop","Rahul Sharma"]],
+Thu:[["07:00","Core & Balance","Priya Verma"],["18:30","Strength Foundations","Vikram Singh"]],
+Fri:[["06:00","HIIT Conditioning","Kabir Malhotra"],["18:00","Leg Day Lab","Rahul Sharma"]],
+Sat:[["08:00","Group Burn","Kabir Malhotra"],["09:30","Functional Circuit","Priya Verma"]],
+Sun:[["09:00","Mobility & Recovery","Priya Verma"]]};
+const QUOTES=[["Rohan Kapoor","Member (sample)","The coaching helped me fix my form and finally break my deadlift plateau."],["Meera Iyer","Member (sample)","I started as a total beginner. The community made showing up easy."],["Aditya Patel","Member (sample)","Clean gym, great equipment, and trainers who actually pay attention."]];
+const FAQS=[["Do I need experience to join?","Not at all. Programs are built for every level, and our coaches will start with an assessment and a plan that suits you."],["Can I try before I join?","Yes. Book a free tour through the contact form and we’ll show you around."],["Can I freeze or change my plan?","Plan terms are set by the gym. Update this answer with your real policy before launch."],["Are personal trainers included?","Personal training sessions are included in the Elite plan and can be arranged separately on other plans."]];
+$("#mq").innerHTML=Array(2).fill(["Strength","Discipline","Progress","Community","Transformation","Confidence"].map(w=>`<span>${w} ★</span>`).join("")).join("");
+const tb=$("#tb");tb.innerHTML=Object.keys(DAYS).map((d,k)=>`<button role="tab" aria-selected="${k==0}" data-d="${d}">${d}</button>`).join("");
+const showDay=d=>{tb.querySelectorAll("button").forEach(b=>b.setAttribute("aria-selected",b.dataset.d===d));$("#tt").innerHTML=DAYS[d].map(c=>`<div class="row"><b>${c[0]}</b><h3>${c[1]}</h3><span>with ${c[2]}</span></div>`).join("")};
+tb.onclick=e=>e.target.dataset.d&&showDay(e.target.dataset.d);showDay("Mon");
+const bmi=()=>{const h=+$("#bh").value/100,w=+$("#bw").value;if(!h||!w){$("#bo").textContent="—";$("#bc").textContent="";return}const b=w/(h*h);$("#bo").textContent=b.toFixed(1);$("#bc").textContent=b<18.5?"Below the typical range":b<25?"Within the typical range":b<30?"Above the typical range":"Well above the typical range"};
+$("#bh").oninput=$("#bw").oninput=bmi;bmi();
+$("#qg").innerHTML=QUOTES.map(q=>`<div class="q rv"><div class="st" aria-label="5 stars">★★★★★</div><p>“${q[2]}”</p><b>${q[0]}</b><small>${q[1]}</small></div>`).join("");
+$("#fq").innerHTML=FAQS.map(f=>`<details class="rv"><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("");
+document.querySelectorAll("#qg .rv,#fq .rv,#tools .rv,#schedule .rv").forEach(e=>ro.observe(e));
+</script>
+</body>
+</html>
